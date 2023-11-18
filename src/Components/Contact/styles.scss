@@ -88,7 +88,7 @@
         .contact-list{
             overflow-y: auto;
             max-height: calc(100vh - 186px);
-            padding-right: 32px;
+            padding-right: 30px;
             &::-webkit-scrollbar {
            
                 width: 6px; 
@@ -114,7 +114,7 @@
                 text-align: center;
               }
             .contact-card{
-                width: 100%; 
+                width: 99%; 
                 margin-bottom: 20px;
                 display: flex;
                 border: 1px solid #293c10;
