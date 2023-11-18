@@ -18,3 +18,11 @@ export interface ErrorPropsTypes {
 }
 
 export type InputFieldType = "text" | "number" | "password" | "submit" | "button" | "textarea";
+
+export interface TableDataType {
+    key: React.Key;
+    name: string;
+    date: string;
+    episode: string;
+    created: string;
+  }

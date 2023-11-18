@@ -1,0 +1,156 @@
+.main-container{
+    display: flex;
+    .contact-container {
+        padding: 24px 0 0 32px;
+        z-index: 2;
+        
+        min-height: 100vh;
+        background-color: #f0e14a;
+        width: 360px;
+        animation: slideInRight 300ms ease-out; // Add animation property
+      
+        @keyframes slideInRight {
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+      
+        .filter {
+            margin-top: 16px;
+            margin-right: 32px;
+            .input-container {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              position: relative;
+        
+              .input {
+                padding: 12px 40px 12px 12px;
+                width: 100%;
+                height: 48px;
+                border: 1px solid #293c10;
+                background-color: #ffffff80;
+                border-radius: 8px;
+      
+                &:focus {
+                  outline: none;
+                }
+              }
+      
+              .search-icon {
+                position: absolute;
+                top: 55%;
+                right: 10px;
+                transform: translateY(-50%);
+                cursor: pointer;
+      
+              
+              }
+            }
+    
+            .select-container{
+                margin-top: 16px ;
+                margin-bottom: 12px;
+                display: flex;
+                gap: 16px;
+             select{
+                background-color: #AED2E8;
+                border: 1px solid #293C10;
+                padding: 6px 6px 6px 9px;
+                border-radius: 6px;
+          
+                
+    
+                &:focus {
+                    outline: none;
+                  }
+             }
+             .reset-button{
+                background-color: #AED2E8;
+                border: 1px solid #293C10;
+                padding: 3px 12px;
+                border-radius: 6px;
+                height: 100%;
+                cursor: pointer;
+                img{
+                    width: 20px;
+                    height: 20px;
+                }
+             }
+            }
+        
+    
+    
+        }
+        .contact-list{
+            overflow-y: auto;
+            max-height: calc(100vh - 186px);
+            padding-right: 32px;
+            &::-webkit-scrollbar {
+           
+                width: 6px; 
+              }
+          
+              &::-webkit-scrollbar-thumb {
+                background-color: #293c106d; 
+                border-radius: 6px; 
+              }
+          
+              &::-webkit-scrollbar-track {
+                background-color: #f0e14a; 
+                border-radius: 6px; 
+              }
+              
+          
+              /* Webkit browsers like Chrome and Safari */
+              .infinite-scroll-component::-webkit-scrollbar {
+                width: 0px;
+              }
+              
+              .{
+                text-align: center;
+              }
+            .contact-card{
+                width: 100%; 
+                margin-bottom: 20px;
+                display: flex;
+                border: 1px solid #293c10;
+                background-color: #ffffff80;
+                border-radius: 12px;
+                height: 112px;
+                cursor: pointer;
+                transition: box-shadow 300ms ease-out;
+
+            
+               &.selected, &:hover{
+                 box-shadow: 3px 3px 0px 0px #293C10;
+               }
+          
+                .left-container{
+                 height: 110px;
+                 width: 110px;
+              
+                 img{
+                     height: 100%;
+                 
+                     min-width: 112px;
+                     object-fit: cover;
+                     border-top-left-radius: 12px;
+                     border-bottom-left-radius: 12px;
+                     overflow: hidden;
+                     
+                 }
+             }
+             .right-container{
+                 padding: 12px 20px;
+             }
+             }
+        }
+      
+      }
+}
+
+  

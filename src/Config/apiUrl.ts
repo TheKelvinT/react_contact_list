@@ -1,2 +1,2 @@
-const apiUrl = "http://localhost:8000/api/v1"
+const apiUrl = "https://rickandmortyapi.com/api"
 export default apiUrl;

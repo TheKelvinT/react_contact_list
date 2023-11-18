@@ -5,13 +5,17 @@ interface ApiCallParameters{
     method?: "POST" | "GET" | "PUT" | "DELETE";
     data?:any;
     isFile?: boolean;
+    useBaseUrl?: boolean; // Optional parameter to use the base URL
+
 }
 
 const apiCall = async({
     url,
     method="GET",
     data=null,
-    isFile=false
+    isFile=false,
+    useBaseUrl = true
+
 }:ApiCallParameters)=>{
 
     const formData = new FormData();
@@ -27,8 +31,10 @@ const apiCall = async({
 
     if(localStorage.getItem("token"))
         headers.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
+        const baseUrl = useBaseUrl ? apiUrl : ''; // Use the base URL conditionally
+
     const response = await fetch(
-        `${apiUrl}${url}`,
+        `${baseUrl}${url}`,
         {
         method,
         headers,
@@ -40,3 +46,4 @@ const apiCall = async({
 }
 
 export default apiCall;
+

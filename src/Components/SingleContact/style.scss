@@ -1,0 +1,137 @@
+
+.details-container{
+    flex-grow: 1;
+    background: linear-gradient(119.7deg, #E89AC7 -32.41%, #292E56 100%);
+    padding: 40px 32px 0 32px;
+    color: #EFFFD8;
+    max-height: 100vh;
+    overflow-y: auto;
+    opacity: 1; /* Set initial opacity to 1 */
+    transition: fadeIn 300ms ease-out; /* Add transition property */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .header{
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 80px;
+        img{
+            border-radius: 50%;
+        }
+        
+    }
+    .personal-info {
+        margin-bottom: 80px;
+        .info-container{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+         }
+      
+       .info{
+        display: flex;
+        flex-basis: calc(50% - 30px); 
+        flex-direction: column;
+        gap: 4px;
+        .label{
+            opacity: 0.7;
+
+            }
+       }
+        
+    }
+    .episodes{
+        .ant-table {
+            background-color: transparent;
+            color: #efffd8;
+            font-family: 'Istok Web', sans-serif;
+        
+            /* Table header styles */
+
+            /* To remove vertical lines in between thead */
+            .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before,.ant-table-wrapper .ant-table-thead >tr>td:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+                position: relative;
+            }
+
+            .ant-table-thead {
+            font-size: 16px;
+            line-height: 23.03px;
+            font-weight: 700;
+        
+            /* Table column styles */
+                .ant-table-column-has-sorters {
+                    background-color: transparent;
+        
+                    &:hover, &::after, &::before {
+                        background-color: transparent;
+                    }
+        
+                /* Sorter icon styles */
+                    .ant-table-column-sorter-full {
+                        color: #efffd89e;
+            
+                        .ant-table-column-sorter-down.active, .ant-table-column-sorter-up.active {
+                            color: #efffd8;
+                        }
+                    }
+                }
+            }
+        
+            /* Table body styles */
+            .ant-table-tbody {
+                font-weight: normal;
+            }
+        
+            /* Table cell styles */
+            .ant-table-cell {
+                border-bottom: 1px solid #ffffff33;
+                background-color: transparent;
+                color: #efffd8;
+                font-size: 16px;
+                line-height: 23.03px;
+            }
+        }
+        
+        /* Pagination styles */
+        .ant-pagination {
+            .ant-pagination-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        
+            /* Pagination item link styles */
+                a {
+                    font-family: 'Istok Web', sans-serif;
+                    color: #efffd8;
+                    font-size: 16px;
+                    line-height: 23.03px;
+                }
+            }
+        
+            /* Active pagination item styles */
+            .ant-pagination-item-active {
+                opacity: 0.3;
+                border: none;
+            
+            /* Active item link styles */
+                a {
+                    color: black;
+                }
+            }
+        
+            /* Ant icon styles */
+            .anticon {
+            color: #efffd8;
+            }
+        }
+    }
+}

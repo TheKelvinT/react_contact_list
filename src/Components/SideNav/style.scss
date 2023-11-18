@@ -1,0 +1,21 @@
+.side-nav{
+
+    z-index: 50;
+    width: 240px;
+    background-color: #97CE4C;
+
+    min-height: 100vh;
+    font-size: 20px;
+    
+    .logo-container{
+        display: flex;
+        justify-content: center;
+        margin: 22px 24px;
+    }
+    .navLinks{
+      background-color: #FFFFFF33;  
+      color: black;
+      padding: 8px 12px;
+
+    }
+}

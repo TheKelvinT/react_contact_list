@@ -1,33 +1,19 @@
-import Form from "../../Components/InfraStructure/Form";
-
+import { Outlet } from "react-router-dom";
 import { validateRegister } from "../../Validation"
+import SideNav from "../../Components/SideNav";
+import '../../Styles/layout.scss'
+import { useState } from "react";
 
 const Home = () => {
+  
   return (
-    <div className="form-container">
-      <Form
-        formStructure = {[
-            {
-                field: "name",
-                label: "Name"
-            },
-            {
-                field: "email",
-                label: "Email"
-            },
-            {
-                field: "phone",
-                label: "Phone"
-            }
-        ]}
-        emptyForm={{
-          name:"",
-          email:"",
-          phone:""
-        }}
-        validateFunction={validateRegister}
-        onSubmit={(d)=>console.log(d)}
-      />
+    <div className="main-container">
+    
+     <SideNav />
+    <div className="content-container" >
+      <Outlet/>
+      </div>
+    
     </div>
   )
   
