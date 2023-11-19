@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import ContactCards from './Components/ContactCards';
 import Filters from './Components/Filters';
 import { ContactListModel } from '../../Types/Data/Contact';
+import { message } from 'antd';
 const Contact = () => {
   const location = useLocation();
   const navigate = useNavigate()
@@ -17,10 +18,15 @@ const Contact = () => {
   const [contactList, setContactList] = useState<ContactListModel | null>(null)
   const [selectedCardId, setSelectedCardId] = useState<number | null>(null);
 
-useEffect(() => {
-  getContactList()
-}, [status, gender, search])
+  useEffect(() => {
+    getContactList()
+  }, [status, gender, search])
 
+  useEffect(() => {
+    if (selectedCardId !== null) {
+      navigate(`/contact/${selectedCardId}`);
+    }
+  }, [selectedCardId]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch((prevSearch) => {
@@ -43,31 +49,29 @@ useEffect(() => {
   try {
     const res = await getCall(`/character?name=${search}&status=${status}&gender=${gender}`)
     if(res){
-     setIsLoading(false)
-     setContactList(res)
-     if(res.data === ''){
-      setContactList(null)
-      setError('No data found')
+      setIsLoading(false)
+      setContactList(res)
+      if(res.data === ''){
+        setContactList(null)
+        setError('No data found')
+      }
     }
+  } catch (err) {
+      setIsLoading(false)
+      setError('An error occurred while fetching data.');
+      if(error){
+        message.error(error)
+      }
     }
-  } catch (error) {
-    setIsLoading(false)
-    setError('An error occurred while fetching data.');
-  }
   }
 
   const handleCardClick: any = (id: number) => {
-    console.log(id);
     setSelectedCardId(id);
   };
 
   const loadMoreData = async() => {
     try {
-      console.log('Next value before condition:', contactList && contactList.info.next);
-
       if(contactList && contactList.info.next){
-        console.log('Inside the condition block');
-
         const res = await getCall(contactList.info.next, false)
         if(res){
           setContactList((prevState) => ({
@@ -75,44 +79,49 @@ useEffect(() => {
             results: [...prevState!.results, ...res.results],
             info: res.info,
           }));
-          console.log('New "next" value:', res.info.next);
-
         }
       }
     } catch (error) {
       console.log(error)
     }
-  
-      }
-     
-      
-  useEffect(() => {
-  
-    if (selectedCardId !== null) {
-      navigate(`/contact/${selectedCardId}`);
-    }
-  }, [selectedCardId]);
-  
+  }
+
   const handleResetClick: any = (id: number) => {
     setStatus('');  
     setSearch('');
     setGender('');
     setSelectedCardId(null);
   };
-  return (
-<div className = 'main-container'>
- <div className='contact-container'>
-      <h2>Contact</h2>
- <Filters gender={gender} search={search} status={status} handleSearchChange={handleSearchChange} handleGenderChange={handleGenderChange} handleStatusChange={handleStatusChange} handleResetClick={handleResetClick}/>
-      {
-        isLoading? <Loading/> : error ? (
-          <p>{error}</p>
-)   :  (<ContactCards data={contactList} selectedCardId={selectedCardId} handleCardClick={handleCardClick} loadMoreData={loadMoreData}/>)
-      }
-    </div>
-    <Outlet/>
-    </div>
 
+  return (
+    <div className = 'main-container'>
+      <div className='contact-container'>
+          <h2>Contact</h2>
+          <Filters 
+            gender={gender} 
+            search={search} 
+            status={status} 
+            handleSearchChange={handleSearchChange} 
+            handleGenderChange={handleGenderChange}
+            handleStatusChange={handleStatusChange} 
+            handleResetClick={handleResetClick}/>
+            {
+              isLoading? <Loading/> : error ? 
+              (
+                <p>{error}</p>
+              )   
+              :  
+              (<ContactCards 
+                data={contactList} 
+                selectedCardId={selectedCardId} 
+                handleCardClick={handleCardClick} 
+                loadMoreData={loadMoreData}
+                />
+              )
+            }
+      </div>
+      <Outlet/>
+    </div>
   );
 };
 

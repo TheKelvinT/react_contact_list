@@ -8,15 +8,12 @@ const Home = () => {
   
   return (
     <div className="main-container">
-    
-     <SideNav />
-    <div className="content-container" >
-      <Outlet/>
+      <SideNav />
+      <div className="content-container" >
+        <Outlet/>
       </div>
-    
     </div>
   )
-  
 }
 
 export default Home

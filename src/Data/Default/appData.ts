@@ -1,7 +1,7 @@
 import { AppState } from "../../Types/Data/AppData";
 
 const appData:AppState = {
-    name: "Ionaught Template App"
+    name: "Rick and Morty Contact App"
 }
 
 export default appData;

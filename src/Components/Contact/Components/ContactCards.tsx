@@ -1,7 +1,7 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {Skeleton, Divider} from 'antd';
 import getCall from '../../../Services/getCall';
+import ContactCard from './ContactCard';
 
 type Props = {
   data: any,
@@ -11,16 +11,14 @@ type Props = {
 }
 
 const ContactCards = ({data, selectedCardId, handleCardClick, loadMoreData}: Props) => {
-  console.log('ContactCards component re-rendered');
 
   if (!data || !data.info || !data.results) {
     return null; 
   }
 
-  console.log(data)
   return (
     <div id='contact-list'  className='contact-list'> 
-    <InfiniteScroll
+      <InfiniteScroll
         dataLength={data.results.length} 
         next={loadMoreData}
         hasMore={data.info.next}
@@ -28,23 +26,11 @@ const ContactCards = ({data, selectedCardId, handleCardClick, loadMoreData}: Pro
         endMessage={<p className='end'>It is all, nothing more 🤐</p>}
         scrollableTarget="contact-list"
       >
-   
         {data.results && data.results.map((contact: any) => (
-          
-          <div  className={`contact-card ${selectedCardId === contact.id ? 'selected' : ''}`} onClick={() => handleCardClick(contact.id)} key={contact.id}>
-                <div className='left-container'>
-              <img src={contact.image} alt={contact.name}/>
-                </div>
-                <div className='right-container'>
-                    <h3>{contact.name}</h3>
-                    <p>{contact.species}</p>
-                </div>
-              </div>
-            ))}
-    
+          <ContactCard contact={contact} handleCardClick={handleCardClick} selectedCardId={selectedCardId}/>
+        ))}
       </InfiniteScroll>
-      </div>
-  
+    </div>
   )
 }
 

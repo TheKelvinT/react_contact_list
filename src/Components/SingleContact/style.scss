@@ -23,13 +23,15 @@
         align-items: center;
         gap: 40px;
         margin-bottom: 80px;
+
         img{
             border-radius: 50%;
         }
-        
     }
+
     .personal-info {
         margin-bottom: 80px;
+        
         .info-container{
             display: flex;
             justify-content: space-between;
@@ -44,18 +46,15 @@
         gap: 4px;
         .label{
             opacity: 0.7;
-
             }
        }
-        
     }
+
     .episodes{
         .ant-table {
             background-color: transparent;
             color: #efffd8;
             font-family: 'Istok Web', sans-serif;
-        
-            /* Table header styles */
 
             /* To remove vertical lines in between thead */
             .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before,.ant-table-wrapper .ant-table-thead >tr>td:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
@@ -67,7 +66,7 @@
             line-height: 23.03px;
             font-weight: 700;
         
-            /* Table column styles */
+                /* Table column styles */
                 .ant-table-column-has-sorters {
                     background-color: transparent;
         
@@ -75,7 +74,7 @@
                         background-color: transparent;
                     }
         
-                /* Sorter icon styles */
+                    /* Sorter icon styles */
                     .ant-table-column-sorter-full {
                         color: #efffd89e;
             
