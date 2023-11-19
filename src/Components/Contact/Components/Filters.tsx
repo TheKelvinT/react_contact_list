@@ -1,6 +1,8 @@
 import React from 'react'
 import { genderList } from '../../../Utils/global';
 import { statusList } from '../../../Utils/global';
+import MagnifyingGlassIcon from '/src/Assets/icon/MagnifyingGlass.png'
+import ArrowIcon from '/src/Assets/icon/ArrowCounterClockwise.png'
 type Props = {
     search: string,
     gender: string,
@@ -32,7 +34,7 @@ function Filters(
           className='input'
         />
         <div className='search-icon'>
-          <img src='/src/Assets/icon/MagnifyingGlass.png' alt='Search' />
+          <img src={MagnifyingGlassIcon} alt='Search' />
         </div>
       </div>
 
@@ -55,7 +57,7 @@ function Filters(
 
         {(gender !== '' || status !== '' || search !== '') && (
           <div>
-            <button className='reset-button' onClick={handleResetClick}><img src='/src/Assets/icon/ArrowCounterClockwise.png'/></button>
+            <button className='reset-button' onClick={handleResetClick}><img src={ArrowIcon}/></button>
           </div>
         )}
       </div>
