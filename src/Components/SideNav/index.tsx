@@ -2,16 +2,8 @@ import './style.scss'
 import Logo from '../../Assets/image/logo.png'
 import { navLinks } from '../../Utils/global';
 import { Link,  useNavigate } from 'react-router-dom';
-
-
-
-
 const SideNav = () => {
-
   const navigate = useNavigate(); 
-
-  
-
   const handleLinkClick = () => {
 
   }

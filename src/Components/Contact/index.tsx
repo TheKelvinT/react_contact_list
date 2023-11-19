@@ -28,7 +28,7 @@ useEffect(() => {
       return newSearch;
     });
   }
-//v
+
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setStatus(e.target.value);
   };
@@ -42,7 +42,6 @@ useEffect(() => {
   setError(null);
   try {
     const res = await getCall(`/character?name=${search}&status=${status}&gender=${gender}`)
-
     if(res){
      setIsLoading(false)
      setContactList(res)
@@ -85,20 +84,17 @@ useEffect(() => {
     }
   
       }
-      useEffect(() => {
-        console.log(contactList);
-      }, [contactList]);
+     
       
   useEffect(() => {
-    console.log(selectedCardId);
+  
     if (selectedCardId !== null) {
       navigate(`/contact/${selectedCardId}`);
     }
   }, [selectedCardId]);
   
   const handleResetClick: any = (id: number) => {
-    setStatus('');  console.log('Loading more data...');
-
+    setStatus('');  
     setSearch('');
     setGender('');
     setSelectedCardId(null);

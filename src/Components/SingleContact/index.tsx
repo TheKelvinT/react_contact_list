@@ -4,11 +4,12 @@ import './style.scss'
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ContactModel,EpisodeModel } from '../../Types/Data/Contact';
 import { formatDate } from '../../Utils/formateDate';
-import { Table,Tag } from 'antd';
+import { Table,Tag, message } from 'antd';
 import type { ColumnsType, TablePaginationConfig, TableProps } from 'antd/es/table';
 import { TableDataType } from '../../Types/PropsTypes';
 import { SorterResult } from 'antd/es/table/interface';
 import { paginationInit } from '../../Utils/paginationConfig';
+import { p } from 'vitest/dist/types-7cd96283';
 
 const SingleContact = () => {
   const scrollableRef = useRef<HTMLDivElement | null>(null);;
@@ -16,7 +17,7 @@ const SingleContact = () => {
   const location = useLocation();
 const [isLoading, setIsLoading] = useState(false)
 const [error, setError] = useState<string|null>(null)
-const [contact, setContact] = useState<ContactModel >()
+const [contact, setContact] = useState<ContactModel|null >(null)
 const [episodeList, setEpisodeList] =  useState<any>([])
 const [episodeIds, setEpisodeIds] =  useState<number[]>([])
 const [pagination, setPagination] = useState<TablePaginationConfig>(paginationInit)
@@ -37,7 +38,8 @@ useEffect(() => {
 useEffect(() => {
   if(episodeIds.length > 0){
     
-  getEpisodeList()}
+  getEpisodeList()
+}
 
 }, [id,episodeIds])
 
@@ -51,21 +53,34 @@ const getContact = async() => {
     try {
       const res = await getCall(`/character/${id}`)
       if(res){
-       setIsLoading(false)
-       setContact(res)
-      
-   //if res.episode is array, proceed. else if its a string, push the string value into singleEpisodeId
+        if(res.data === ''){
+          setContact(null)
+          setError('No data found')
+        }
+       /*  if(res.error){
+          console.log(res.error)
+          setError(res.error)
+          message.error(res.error)
+        } */ else {
+          setIsLoading(false)
+          setContact(res)
+        }
+  
+        
       const episodeURLs = res.episode
-      // const singleEpisodeId = ''
       const episodeIds = []
 
       for (const episodeURL of episodeURLs) {
-        const episodeId = extractEpisodeId(episodeURL); // Extract episode ID from URL
+        const episodeId = extractEpisodeId(episodeURL); 
   
         episodeIds.push(episodeId);
         
         }
         setEpisodeIds(episodeIds)
+
+      } else {
+        setError('No data found')
+        message.error(error)
 
       }
       
@@ -185,31 +200,42 @@ const onChange: TableProps<TableDataType>['onChange'] = (pagination, filters, so
 };
 
   return (
-      <div className='details-container' ref={scrollableRef}>
-     
-      <div className='header'>
-        <img src={contact && contact.image} alt={contact && contact.name} />
-        <h1>{contact && contact.name}</h1>
-      </div>
-      <div className='personal-info'>
-        <h2>Personal Info</h2>
-        <div className='info-container'>
-          {content.map((item) => (
-        <div key={item.label} className='info'>
-              <p className='label'>{item.label}</p>
-              <h3>{item.content}</h3>
-            </div>
-          ))}
+    
+    <>
+      {error ? (
+        <div className='details-container'>
+        <h2>No Data Found</h2>
         </div>
-      </div>
-      <div className='episodes'>
-      <h2>Episodes</h2>
-      
-{episodeList.length > 0 && <Table columns={columns} dataSource={episodeList && episodeList} pagination={pagination}  onChange={onChange} className='table'/>}
-      </div>
- 
-    </div>
-  );
+      ) : contact ?  (
+            <div className='details-container' ref={scrollableRef}>
+            <div className='header'>
+              <img src={contact && contact.image} alt={contact && contact.name} />
+              <h1>{contact && contact.name}</h1>
+            </div>
+            <div className='personal-info'>
+              <h2>Personal Info</h2>
+              <div className='info-container'>
+                {content.map((item) => (
+              <div key={item.label} className='info'>
+                    <p className='label'>{item.label}</p>
+                    <h3>{item.content}</h3>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className='episodes'>
+            <h2>Episodes</h2>
+            
+      {episodeList.length > 0 && <Table columns={columns} dataSource={episodeList && episodeList} pagination={pagination}  onChange={onChange} className='table'/>}
+            </div>
+       
+          </div>
+      ): (
+        <p>No Data Found</p>
+      ) }
+    
+    </>  
+    );
 };
 
 export default SingleContact;
