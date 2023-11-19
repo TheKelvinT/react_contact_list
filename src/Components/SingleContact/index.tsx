@@ -10,6 +10,8 @@ import { SorterResult } from 'antd/es/table/interface';
 import { paginationInit } from '../../Utils/paginationConfig';
 import PersonalInfo from './Components/PersonalInfo';
 import { formatDate } from '../../Utils/formateDate';
+import NotFound from './Components/NotFound';
+import Background from './Components/NotFound';
 
 const SingleContact = () => {
   const scrollableRef = useRef<HTMLDivElement | null>(null);;
@@ -176,12 +178,12 @@ const onChange: TableProps<TableDataType>['onChange'] = (pagination, filters, so
   return (
     <>
       {error ? (
-        <div className='details-container'>
-          <h2>No Data Found</h2>
-        </div>
+        <NotFound/>
+       
       ) : 
       (contact && episodeList) ?  (
-        <div className='details-container' ref={scrollableRef}>
+    <div className='details-container no-scroll' ref={scrollableRef}>
+          <div className="space"/>
           <div className='header'>
             <img src={contact && contact.image} alt={contact && contact.name} />
             <h1>{contact && contact.name}</h1>
@@ -192,6 +194,7 @@ const onChange: TableProps<TableDataType>['onChange'] = (pagination, filters, so
           {episodeList.length > 0 && 
           <Table columns={columns} dataSource={episodeList && episodeList} pagination={pagination}  onChange={onChange} className='table'/>}
         </div>
+       
       </div>
       ): null }
     </>  

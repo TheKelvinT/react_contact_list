@@ -17,6 +17,11 @@ form {
   display: contents;
 }
 
+.no-scroll{
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 :root {
   --white: #fff;
   --black: #000;

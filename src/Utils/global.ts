@@ -1,8 +1,3 @@
-export const navLinks = [
-    { id: 1, text: 'Contact', path: '/contact' },
-    // { id: 2, text: 'About', path: '/about' },
-    // { id: 3, text: 'Services', path: '/services' },
-  ];
 
 export  const statusList = [
   {value:'', label:'Status'},

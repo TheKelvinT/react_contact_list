@@ -1,7 +1,7 @@
 import './style.scss'
 import Logo from '../../Assets/image/logo.png'
-import { navLinks } from '../../Utils/global';
 import { Link,  useNavigate } from 'react-router-dom';
+import RickImage from '../../Assets/image/rick-nav.png';
 
 const SideNav = () => {
   const navigate = useNavigate(); 
@@ -11,11 +11,11 @@ const SideNav = () => {
       <Link to='/' className='logo-container'>
         <img src={Logo}/>
       </Link>
-      {navLinks.map((link) => (
-       <div key={link.id} className='navLinks' >
-         <Link to={link.path}><h3>{link.text}</h3></Link>
-       </div>
-      ))}
+    
+        <div className='navLinks' >
+          <Link to='/contact' className="link"><img src={RickImage}/><h3>Contact</h3></Link>
+        </div>
+     
     </div>
   );
 };

@@ -16,6 +16,10 @@
       background-color: #FFFFFF33;  
       color: black;
       padding: 8px 12px;
-
+      .link{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
     }
 }

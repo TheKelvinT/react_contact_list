@@ -4,6 +4,7 @@ import Contact from '../Components/Contact/index'
 import SingleContact from '../Components/SingleContact/index'
 import NotFound from "../Components/NotFound"
 
+
 const Router = () => {
   return (
     <Routes>
