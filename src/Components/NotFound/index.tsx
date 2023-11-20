@@ -9,9 +9,11 @@ const NotFound = () => {
   
   return (
     <div className="main-container">
+         <SpeechBubble/>
       <SideNav />
+   
       <div className="content-container" >
-        <SpeechBubble/>
+   
     
       </div>
     </div>

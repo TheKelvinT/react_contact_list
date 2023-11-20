@@ -1,27 +1,16 @@
-.container{
-    background-color: white;
-    position: absolute;
-    top: 40%;
-    left: 25%;
-    z-index: 999;
-    width: 500px;
-    height: 100px;
-}
 
 .speech-bubble{
     position: absolute;
-
-    transform: translate(90%,170%);
+    left: 23%;
+    top: 30%;
+    z-index: 2;
+    
     $black: #000;
-$white: #fff;
-$shadow: rgba(0,0,0,0.1);
+    $white: #fff;
+    $shadow: rgba(0,0,0,0.1);
+    $px: 4px;
 
-$px: 4px;
 
-body {
-	background-color:#6e6565;
-	padding: 60px;
-}
 
 $bubble-border: 0 -1*$px $white, 
 		0 -2*$px $black, 
@@ -42,16 +31,15 @@ $bubble-border: 0 -1*$px $white,
 	margin: 5*$px;
 	text-align: center;
 	font-family: 'Press Start 2P', cursive;
-	font-size: 20px;
+    font-size: 1.35vw; // Use vw (viewport width) for font size
 	line-height:1.3em;
 	// letter-spacing: -0.04em;
 	background-color: $white;
 	color: $black;
 	padding: 3*$px;
 	box-shadow: $bubble-border;
-		
 	box-sizing: border-box;
-	width:400px;
+	width: 25vw;
 
 	&::after {
 		content: '';
