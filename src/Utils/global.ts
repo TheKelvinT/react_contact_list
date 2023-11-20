@@ -1,14 +1,13 @@
 
 export  const statusList = [
-  {value:'', label:'Status'},
-  {value:'alive', label:'Alive'},
-  {value:'dead', label:'Deceased'},
-  {value:'unknown',label:'Unknown'}]
+  {value:'Alive', label:'Alive'},
+  {value:'Dead', label:'Dead'},
+  {value:'Unknown',label:'Unknown'}]
 
   export  const genderList = [
-    {value:'', label:'Gender'},
-    {value:'female', label:'Female'},
-    {value:'male', label:'Male'},
-    {value:'genderless',label:'Genderless'},
-    {value:'unknown',label:'Unknown'}]
+
+    {value:'Female', label:'Female'},
+    {value:'Male', label:'Male'},
+    {value:'Genderless',label:'Genderless'},
+    {value:'Unknown',label:'Unknown'}]
 

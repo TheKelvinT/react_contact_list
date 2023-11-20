@@ -47,7 +47,7 @@ const Contact = () => {
   setIsLoading(true)
   setError(null);
   try {
-    const res = await getCall(`/character?name=${search}&status=${status}&gender=${gender}`)
+    const res = await getCall(`/character?name=${search.toLowerCase()}&status=${status.toLowerCase()}&gender=${gender.toLowerCase()}`)
     if(res){
       setIsLoading(false)
       setContactList(res)

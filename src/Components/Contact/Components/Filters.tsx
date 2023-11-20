@@ -3,6 +3,7 @@ import { genderList } from '../../../Utils/global';
 import { statusList } from '../../../Utils/global';
 import MagnifyingGlassIcon from '/src/Assets/icon/MagnifyingGlass.png'
 import ArrowIcon from '/src/Assets/icon/ArrowCounterClockwise.png'
+import Dropdown from './Dropdown';
 type Props = {
     search: string,
     gender: string,
@@ -38,25 +39,14 @@ function Filters(
         </div>
       </div>
 
-      <div className='select-container'>
-        <select value={status} onChange={handleStatusChange}>
-          {statusList.map((statusOption) => (
-            <option key={statusOption.value} value={statusOption.value}>
-              {statusOption.label}
-            </option>
-          ))}
-        </select>
-      
-        <select value={gender} onChange={handleGenderChange}>
-          {genderList.map((genderOption) => (
-            <option key={genderOption.value} value={genderOption.value}>
-              {genderOption.label}
-            </option>
-          ))}
-        </select>
+      <div className='dropdown-container'>
+      <Dropdown dropdownList={statusList} handleChange={handleStatusChange} state={status} name='Status' width='100px'/>
 
+      <Dropdown dropdownList={genderList} handleChange={handleGenderChange} state={gender}  name='Gender' width='120px'/>
+  
+        
         {(gender !== '' || status !== '' || search !== '') && (
-          <div>
+          <div >
             <button className='reset-button' onClick={handleResetClick}><img src={ArrowIcon}/></button>
           </div>
         )}

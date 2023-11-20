@@ -12,7 +12,7 @@ const NotFound = (props: Props) => {
 				<div className="img-wrapper">
 					<span>44</span>
 				</div>
-				{/* <p>The contact you are trying to search has been <br/> moved to another universe.</p> */}
+				<p>The contact you are trying to search has been <br/> moved to another universe.</p>
                 <Link to='/contact'>
 				<button type="button">Search Again</button>
                 </Link>

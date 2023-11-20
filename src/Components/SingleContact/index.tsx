@@ -182,8 +182,8 @@ const onChange: TableProps<TableDataType>['onChange'] = (pagination, filters, so
        
       ) : 
       (contact && episodeList) ?  (
-    <div className='details-container no-scroll' ref={scrollableRef}>
-          <div className="space"/>
+    <div className='details-container ' ref={scrollableRef}>
+      
           <div className='header'>
             <img src={contact && contact.image} alt={contact && contact.name} />
             <h1>{contact && contact.name}</h1>
