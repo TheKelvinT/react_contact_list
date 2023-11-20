@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import ArrowIcon from '../../../Assets/icon/dropdownArrow.png'
+import ArrowIcon from '../../../Assets/icon/DropdownArrow.png'
 
 type Props = {
     dropdownList: {value: string, label: string}[],
