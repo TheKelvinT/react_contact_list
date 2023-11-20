@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import ArrowIcon from '../../../Assets/icon/dropdownArrow.png'
 
 type Props = {
@@ -12,6 +12,23 @@ type Props = {
 const Dropdown = ({dropdownList, handleChange,state, name, width}: Props) => {
     const [open, setOpen] = useState(false)
     const [maxLabelWidth, setMaxLabelWidth] = useState<number>(0);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+
+    useEffect(() => {
+    
+      const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+          setOpen(false);
+        }
+      };
+  
+      document.addEventListener('click', handleClickOutside);
+  
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }, [dropdownList]);
 
     const handleRadioChange = (e: any) => {
       setOpen(false);
@@ -20,7 +37,7 @@ const Dropdown = ({dropdownList, handleChange,state, name, width}: Props) => {
 
   
   return (
-    <div className='dropdown' >
+    <div className='dropdown' ref={dropdownRef}>
         <div className='dropdown-display' onClick={() => setOpen(!open)} style={{ width: width }}>
 {state === ''? <span>{name}</span> : <span>{state}</span>}<span><img src={ArrowIcon} className={open ? 'rotated-arrow' : ''} /></span>
         </div>
