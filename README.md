@@ -10,7 +10,7 @@ This React Vite application allows you to explore characters and episodes from t
 - **Custom Dropdown Component:** Use a custom dropdown component for an enhanced user experience.
 - **Infinite Scrolling:** Enjoy seamless scrolling when viewing more than 20 character cards.
 - **404 Page:** A custom 404 page for handling not-found routes.
-- **Detail Page:** View detailed information about a character, including their name and personal info, and a table displaying episodes.
+- **Detail Page:** View detailed information about a character, including their name and personal info, and a table displaying appearing episodes.
 
 ## API Integrated
 
