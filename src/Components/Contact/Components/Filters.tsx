@@ -41,10 +41,7 @@ function Filters(
 
       <div className='dropdown-container'>
       <Dropdown dropdownList={statusList} handleChange={handleStatusChange} state={status} name='Status' width='100px'/>
-
       <Dropdown dropdownList={genderList} handleChange={handleGenderChange} state={gender}  name='Gender' width='120px'/>
-  
-        
         {(gender !== '' || status !== '' || search !== '') && (
           <div >
             <button className='reset-button' onClick={handleResetClick}><img src={ArrowIcon}/></button>

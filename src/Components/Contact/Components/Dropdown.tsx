@@ -14,17 +14,13 @@ const Dropdown = ({dropdownList, handleChange,state, name, width}: Props) => {
     const [maxLabelWidth, setMaxLabelWidth] = useState<number>(0);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-
     useEffect(() => {
-    
       const handleClickOutside = (event: MouseEvent) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
           setOpen(false);
         }
       };
-  
       document.addEventListener('click', handleClickOutside);
-  
       return () => {
         document.removeEventListener('click', handleClickOutside);
       };
@@ -39,7 +35,9 @@ const Dropdown = ({dropdownList, handleChange,state, name, width}: Props) => {
   return (
     <div className='dropdown' ref={dropdownRef}>
         <div className='dropdown-display' onClick={() => setOpen(!open)} style={{ width: width }}>
-{state === ''? <span>{name}</span> : <span>{state}</span>}<span><img src={ArrowIcon} className={open ? 'rotated-arrow' : ''} /></span>
+            {state === ''? <span>{name}</span>
+            : <span>{state}</span>}<span><img src={ArrowIcon} className={open ? 'rotated-arrow' 
+            : ''} /></span>
         </div>
         {open? 
    <div className='options'>
@@ -56,11 +54,7 @@ const Dropdown = ({dropdownList, handleChange,state, name, width}: Props) => {
        <label htmlFor={option.value}>{option.label}</label>
      </div>
    ))}
-
-  
- </div>: null}
-
-   
+    </div>: null}
   </div>
   )
 }

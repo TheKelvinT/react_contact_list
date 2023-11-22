@@ -12,10 +12,9 @@ const SideNav = () => {
         <img src={Logo}/>
       </Link>
     
-        <div className='navLinks' >
-          <Link to='/contact' className="link"><img src={RickImage}/><h3>Contact</h3></Link>
-        </div>
-     
+      <div className='navLinks' >
+        <Link to='/contact' className="link"><img src={RickImage}/><h3>Contact</h3></Link>
+      </div>
     </div>
   );
 };

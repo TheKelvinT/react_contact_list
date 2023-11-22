@@ -20,7 +20,6 @@
       }
     }
     
-
     .header{
         display: flex;
         align-items: center;
@@ -34,7 +33,7 @@
 
     .personal-info {
         margin-bottom: 80px;
-        
+      
         .info-container{
             display: flex;
             justify-content: space-between;
@@ -150,8 +149,6 @@
         text-align: center;
         z-index: 4;
       
-      
-      
       span {
         &:first-letter{
         letter-spacing: 12vmax; 
@@ -199,7 +196,6 @@
        }
       }
       
-      
       @keyframes spin {
         
         from {
@@ -221,7 +217,6 @@
           opacity: 1;
         }
       }
-      
       
       .space {
         position: absolute;

@@ -35,7 +35,7 @@ const SingleContact = () => {
 
   useEffect(() => {
     if(episodeIds.length > 0){
-    getEpisodeList()
+      getEpisodeList()
     }
   }, [id,episodeIds])
 
@@ -126,7 +126,6 @@ const SingleContact = () => {
       showSorterTooltip: false,
       sorter: (a, b) => a.name.localeCompare(b.name),
       sortOrder: sortOrderName,
-
     },
     {
       title: 'Air Date',
@@ -134,7 +133,6 @@ const SingleContact = () => {
       key: 'name',
       width: "20%",
       showSorterTooltip: false,
-      
       render: (text: any) => (text ? formatDate(text,false) : "-"),
     },
     {
@@ -144,7 +142,6 @@ const SingleContact = () => {
       key: 'name',
       showSorterTooltip: false,
       render: (text: any) => (text ? <Tag color="#FFFFFF33">{text}</Tag> : "-"),
-
     },
     {
       title: 'Created Date',
@@ -155,11 +152,9 @@ const SingleContact = () => {
       sorter: (a, b) => {
         const dateA = new Date(a.created).getTime();
         const dateB = new Date(b.created).getTime();
-    
         return dateA - dateB;
       },
       sortOrder: sortOrderCreated,
-    
       render: (text: any) => (text ? formatDate(text) : "-"),
     },
   ];
@@ -179,24 +174,27 @@ const onChange: TableProps<TableDataType>['onChange'] = (pagination, filters, so
     <>
       {error ? (
         <NotFound/>
-       
       ) : 
       (contact && episodeList) ?  (
     <div className='details-container ' ref={scrollableRef}>
-      
           <div className='header'>
             <img src={contact && contact.image} alt={contact && contact.name} />
             <h1>{contact && contact.name}</h1>
           </div>
       <PersonalInfo contact={contact} />
-        <div className='episodes'>
-          <h2>Episodes</h2>
-          {episodeList.length > 0 && 
-          <Table columns={columns} dataSource={episodeList && episodeList} pagination={pagination}  onChange={onChange} className='table'/>}
-        </div>
-       
+      <div className='episodes'>
+        <h2>Episodes</h2>
+        {episodeList.length > 0 && 
+        <Table 
+          columns={columns} 
+          dataSource={episodeList && episodeList} 
+          pagination={pagination}  
+          onChange={onChange} 
+          className='table'
+          />}
       </div>
-      ): null }
+    </div>
+    ): null }
     </>  
   );
 };

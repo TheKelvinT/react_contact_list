@@ -89,7 +89,6 @@
               left: 0;
               width: 100%;
 
-            
               .option{
                 display: flex;
                 gap: 8px;
@@ -121,8 +120,7 @@
             max-height: calc(100vh - 186px);
             padding-right: 30px;
             &::-webkit-scrollbar {
-           
-                width: 6px; 
+              width: 6px; 
               }
           
               &::-webkit-scrollbar-thumb {
@@ -144,41 +142,42 @@
               .end{
                 text-align: center;
               }
-            .contact-card{
-                width: 99%; 
-                margin-bottom: 20px;
-                display: flex;
-                border: 1px solid #293c10;
-                background-color: #ffffff80;
-                border-radius: 12px;
-                height: 112px;
-                cursor: pointer;
-                transition: box-shadow 300ms ease-out;
 
-            
-               &.selected, &:hover{
-                 box-shadow: 3px 3px 0px 0px #293C10;
-               }
-          
-                .left-container{
-                 height: 110px;
-                 width: 110px;
+              .contact-card{
+                  width: 99%; 
+                  margin-bottom: 20px;
+                  display: flex;
+                  border: 1px solid #293c10;
+                  background-color: #ffffff80;
+                  border-radius: 12px;
+                  height: 112px;
+                  cursor: pointer;
+                  transition: box-shadow 300ms ease-out;
+
               
-                 img{
-                     height: 100%;
-                 
-                     min-width: 112px;
-                     object-fit: cover;
-                     border-top-left-radius: 12px;
-                     border-bottom-left-radius: 12px;
-                     overflow: hidden;
-                     
-                 }
-             }
-             .right-container{
-                 padding: 12px 20px;
-             }
-             }
+                &.selected, &:hover{
+                  box-shadow: 3px 3px 0px 0px #293C10;
+                }
+            
+                  .left-container{
+                  height: 110px;
+                  width: 110px;
+                
+                  img{
+                      height: 100%;
+                  
+                      min-width: 112px;
+                      object-fit: cover;
+                      border-top-left-radius: 12px;
+                      border-bottom-left-radius: 12px;
+                      overflow: hidden;
+                      
+                  }
+              }
+              .right-container{
+                  padding: 12px 20px;
+              }
+              }
         }
       
       }

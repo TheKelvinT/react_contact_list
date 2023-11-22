@@ -2,7 +2,6 @@ import React from 'react'
 import { ContactModel } from '../../../Types/Data/Contact'
 import { formatDate } from '../../../Utils/formateDate'
 
-
 type Props = {
     contact: ContactModel
 }
@@ -41,14 +40,14 @@ const PersonalInfo = ({contact}: Props) => {
     <div className='personal-info'>
         <h2>Personal Info</h2>
         <div className='info-container'>
-        {content.map((item) => (
-        <div key={item.label} className='info'>
-        <p className='label'>{item.label}</p>
-        <h3>{item.content}</h3>
+          {content.map((item) => (
+            <div key={item.label} className='info'>
+              <p className='label'>{item.label}</p>
+              <h3>{item.content}</h3>
+            </div>
+          ))}
         </div>
-        ))}
-  </div>
-  </div>
+    </div>
   )
 }
 
